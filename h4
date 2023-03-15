@@ -1,0 +1,24 @@
+def f3():
+    s = Tk()
+    frame = Frame(s, height=500, width=750)
+    frame.pack()
+    l1 = Label(s, text='service available/सेवाएं उपलब्ध हैं')
+    l1.place(x=20, y=10)
+    f = ["ULTRASOUND/अल्ट्रासाउंड", "X-RAY/एक्स-रे", "CT Scan/सीटी स्कैन", "MRI/एमआरआई", "BLOOD COLLECTION/रक्त संग्रह", "DIALYSIS/डायलिसिस", "ECG/ईसीजी", "CHEMISTरसायनज्ञ", "LAB/प्रयोगशाला"]
+    count1 = 20
+    for i in f:
+        count1 = count1 + 20
+        l3 = Label(s, text=i)
+        l3.place(x=50, y=count1)
+    l2 = Label(s, text='ROOM NO./कमरा नंबर')
+    l2.place(x=200, y=10)
+    g = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    count2 = 20
+    for i in g:
+        count2 = count2 + 20
+        l4 = Label(s, text=i)
+        l4.place(x=220, y=count2)
+    l5 = Label(s, text='To avail any of these services please contact on the no./इनमें से किसी का भी लाभ उठाने के लिए कृपया हमारे नंबर पर संपर्क करें=4864684348')
+    l5.place(x=0, y=240)
+    s.resizable(False, False)
+    s.mainloop()
