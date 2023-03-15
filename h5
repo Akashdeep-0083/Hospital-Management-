@@ -1,0 +1,90 @@
+def f4():
+    global a1, a2, a3, a4, a5, a6, b
+    p1 = a1.get()
+    b.execute('select * from hospital where idno=(%s)', (p1,))
+
+    pop= b.fetchall()
+    a = []
+    for i in pop:
+        a.append(i)
+    if len(a) == 0:
+        tkinter.messagebox.showwarning("ERROR", "NO DATA FOUND!!")
+    else:
+        a6 = Tk()
+        frame = Frame(a6, height=500, width=500)
+        frame.pack()
+        l1 = Label(a6, text='DATA MODIFICATION', font="arial 15 bold")
+        l1.place(x=75, y=10)
+        l2 = Label(a6, text='WHAT YOU WANT TO CHANGE')
+        l2.place(x=50, y=200)
+        l3 = Label(a6, text='1.NAME')
+        l3.place(x=50, y=220)
+        l4 = Label(a6, text='2.AGE')
+        l4.place(x=50, y=240)
+        l5 = Label(a6, text='3.GENDER')
+        l5.place(x=50, y=260)
+        l6 = Label(a6, text='4.PHONE')
+        l6.place(x=50, y=280)
+        l7 = Label(a6, text='5.BLOOD GROUP')
+        l7.place(x=50, y=300)
+        x2 = Label(a6, text='Enter')
+        x2.place(x=50, y=330)
+        a2 = tkinter.Entry(a6)
+        a3 = a2.get()
+        a2.place(x=100, y=330)
+        for i in pop:
+            name = Label(a6, text='NAME:-')
+            name.place(x=50, y=80)
+            name1 = Label(a6, text=i[1])
+            name1.place(x=150, y=80)
+            age = Label(a6, text='AGE:-')
+            age.place(x=50, y=100)
+            age1 = Label(a6, text=i[2])
+            age1.place(x=150, y=100)
+            gen = Label(a6, text='GENDER:-')
+            gen.place(x=50, y=120)
+            gen1 = Label(a6, text=i[3])
+            gen1.place(x=150, y=120)
+            pho = Label(a6, text='PHONE:-')
+            pho.place(x=50, y=140)
+            pho1 = Label(a6, text=i[4])
+            pho1.place(x=150, y=140)
+            bg = Label(a6, text='BLOOD GROUP:-')
+            bg.place(x=50, y=160)
+            bg1 = Label(a6, text=i[5])
+            bg1.place(x=150, y=160)
+        k = Button(a6, text='Submit', command=f5)
+        k.place(x=50, y=400)
+        L1 = Label(a6, text='OLD DETAILS')
+        L1.place(x=50, y=50)
+        L2 = Label(a6, text='ENTER NEW DETAIL')
+        L2.place(x=50, y=360)
+        a5 = tkinter.Entry(a6)
+        a4 = a5.get()
+        a5.place(x=160, y=360)
+        a6.resizable(False, False)
+        a6.mainloop()
+
+def f5():
+    global ad, a1, a2, a5
+    ad = a1.get()
+    a3 = a1.get()
+    new = a5.get()
+    if a3 == '1':
+        b.execute('update hospital set name={} where idno={}'.format(new, ad))
+    elif a3 == '2':
+        b.execute('update hospital set age={} where idno={}'.format(new, ad))
+    elif a3 == '3':
+        b.execute('update hospital set diseasse={} where idno={}'.format(new, ad))
+    elif a3 == '4':
+        b.execute('update hospital set fee={} where idno={}'.format(new, ad))
+    elif a4 == '5':
+        b.execute('update hospital set bg={} where idno={}'.format(new, ad))
+    else:
+        pass
+    a6.destroy()
+    tkinter.messagebox.showinfo("DONE", "YOUR DATA HAS BEEN MODIFIED")
+
+a3 = None
+a4 = None
+ad = None
